@@ -1,7 +1,9 @@
-/*---------------------------------
+/*--------------------------------/
+ *
  * Actividad de programacion
  * Fecha: 20 de Agosto
  * Autor: Alberto Castañeda Arana
+ * 
 /--------------------------------*/
 
 #define TIMER_H_
