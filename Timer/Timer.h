@@ -39,7 +39,7 @@ class Timer
             mins = source.mins;
         }
         std::string toString() const;
-        int getHours() const{return hours;}
+        int getHours() const;
         int getMins() const;
         void operator= (const Timer&);
         void operator+= (const Timer&);
@@ -50,11 +50,11 @@ class Timer
 
 
 };
-/*
+
 int Timer::getHours() const{
     return hours;
 }
-*/
+
 int Timer::getMins() const{
     return mins;
 }
