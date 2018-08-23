@@ -94,5 +94,6 @@ int main(int argc, char* argv[]) {
 
 	test.runTest();
 	std::cout << "SUCCESS!\n";
+
 	return 0;
 }
