@@ -97,6 +97,16 @@ template <class T>
 unsigned int Vector<T>::resize(unsigned int newSize, T &initValue) throw (RangeError, OutOfMemory) {
 	if(newSize == 0)
 		throw RangeError();
+	//T * newdata = new T[size]
+	/*
+	if(newSize <= Size)
+		for hasta size
+	else 
+		for hasta newSize
+	delete() data;
+	data = newData
+	size = newSize
+	*/
 	size = newSize;
 	data = new T[size];
 	if(data == 0)
@@ -105,6 +115,7 @@ unsigned int Vector<T>::resize(unsigned int newSize, T &initValue) throw (RangeE
 	{
 		data[i] = initValue;
 	}
+
 	return 0;
 }
 
