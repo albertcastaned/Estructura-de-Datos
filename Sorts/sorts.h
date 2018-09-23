@@ -44,7 +44,7 @@ std::vector<T> Sorts<T>::bucketSort(const std::vector<T> &source)
 {
 	std::vector<T> v(source);
 
-	std::vector<T> listas[10];
+	std::list<T> listas[10];
 
 	for (int i = 0; i < v.size(); i++)
 	{
@@ -55,8 +55,8 @@ std::vector<T> Sorts<T>::bucketSort(const std::vector<T> &source)
 	std::vector<T> f;
 	for (int i = 0; i < 10; i++)
 	{
-		listas[i] = insertionSort(listas[i]);
-		f.insert(f.end(), listas[i].begin(), listas[i].end());
+		listas[i].sort();
+		f.insert(f.end(),listas[i].begin(),listas[i].end());
 	}
 
 	return f;
