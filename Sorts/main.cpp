@@ -55,13 +55,12 @@ class SortsTest : public UnitTest
 
 		/* TEST 1 */
 		v = sorts.bucketSort(source);
-		std::cout << arrayToString(v).c_str();
 		ASSERT_TRUE(!strcmp("[1, 3, 4, 5, 8, 11, 21, 28, 52, 54, 58, 61, 64, 65, 75, 78, 84, 91, 92, 92]",
 							arrayToString(v).c_str()));
 		std::cout << "PASSED.\nTest 2...";
 
 		/* TEST 2 */
-		/*int a1[] = {35, 55, 59, 60, 69, 96};
+		int a1[] = {35, 55, 59, 60, 69, 96};
 		std::list<int> lst1(a1, a1 + sizeof(a1) / sizeof(int));
 
 		int a2[] = {51, 57, 71, 74};
@@ -74,12 +73,12 @@ class SortsTest : public UnitTest
 		std::cout << "PASSED.\nTest 3...";
 
 		/* TEST 3 */
-		/*
+		
 		result = sorts.mergeList(lst2, lst1);
 		ASSERT_TRUE(!strcmp("[35, 51, 55, 57, 59, 60, 69, 71, 74, 96]",
 							listToString(result).c_str()));
 		std::cout << "PASSED.\n";
-		*/
+		
 	}
 };
 
