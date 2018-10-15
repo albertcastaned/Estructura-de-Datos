@@ -1,9 +1,8 @@
-/*
- * sorts.h
- *
- *  Created on: 05/08/2015
- *      Author: pperezm
- */
+/*----------------------------------------
+ * Actividad de Programacion: Algoritmos de Ordenamiento
+ * Fecha: 23 de Septiembre 2018
+ * Autor: Alberto Castañeda Arana
+ ----------------------------------------*/
 
 #ifndef SORTS_H_
 #define SORTS_H_
@@ -44,7 +43,7 @@ std::vector<T> Sorts<T>::bucketSort(const std::vector<T> &source)
 {
 	std::vector<T> v(source);
 
-	std::vector<T> listas[10];
+	std::list<T> listas[10];
 
 	for (int i = 0; i < v.size(); i++)
 	{
@@ -55,8 +54,8 @@ std::vector<T> Sorts<T>::bucketSort(const std::vector<T> &source)
 	std::vector<T> f;
 	for (int i = 0; i < 10; i++)
 	{
-		listas[i] = insertionSort(listas[i]);
-		f.insert(f.end(), listas[i].begin(), listas[i].end());
+		listas[i].sort();
+		f.insert(f.end(),listas[i].begin(),listas[i].end());
 	}
 
 	return f;
@@ -147,7 +146,52 @@ void Sorts<T>::copyArray(std::vector<T> &A, std::vector<T> &B, int low, int high
 		A[i] = B[i];
 	}
 }
-
+template <class T>
+std::list<T> Sorts<T>::mergeList(const std::list<T> &lst1, const std::list<T> &lst2)
+{	
+	std::list<T> copylist1 = lst1;
+	std::list<T> copylist2 = lst2;
+	int size1 = copylist1.size();
+	int size2 = copylist2.size();
+	std::list<T> flist;
+	while(size1 != 0 && size2 != 0)
+	{
+		if(copylist1.front() < copylist2.front())
+		{
+		flist.push_back(copylist1.front());
+		copylist1.pop_front();
+		size1--;
+		}else if(copylist1.front() > copylist2.front())
+		{
+		flist.push_back(copylist2.front());
+		copylist2.pop_front();
+		size2--;
+		//Elementos igual se elimina de primera lista
+		}else if(copylist1.front() == copylist2.front()){
+		flist.push_back(copylist1.front());
+		copylist1.pop_front();
+		size1--;
+		}
+	}
+	if(size1 > 0)
+	{
+		while(size1 != 0)
+		{
+		flist.push_back(copylist1.front());
+		copylist1.pop_front();
+		size1--;
+		}
+	}else if(size2 > 0)
+	{
+		while(size2 != 0)
+		{
+		flist.push_back(copylist2.front());
+		copylist2.pop_front();
+		size2--;
+		}
+	}	
+	return flist;
+}
 template <class T>
 void Sorts<T>::mergeArray(std::vector<T> &A, std::vector<T> &B, int low, int mid, int high)
 {
