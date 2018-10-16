@@ -55,7 +55,7 @@ std::vector<T> Sorts<T>::bucketSort(const std::vector<T> &source)
 	for (int i = 0; i < 10; i++)
 	{
 		listas[i].sort();
-		f.insert(f.end(),listas[i].begin(),listas[i].end());
+		f.insert(f.end(), listas[i].begin(), listas[i].end());
 	}
 
 	return f;
@@ -148,48 +148,52 @@ void Sorts<T>::copyArray(std::vector<T> &A, std::vector<T> &B, int low, int high
 }
 template <class T>
 std::list<T> Sorts<T>::mergeList(const std::list<T> &lst1, const std::list<T> &lst2)
-{	
+{
 	std::list<T> copylist1 = lst1;
 	std::list<T> copylist2 = lst2;
 	int size1 = copylist1.size();
 	int size2 = copylist2.size();
 	std::list<T> flist;
-	while(size1 != 0 && size2 != 0)
+	while (size1 != 0 && size2 != 0)
 	{
-		if(copylist1.front() < copylist2.front())
+		if (copylist1.front() < copylist2.front())
 		{
-		flist.push_back(copylist1.front());
-		copylist1.pop_front();
-		size1--;
-		}else if(copylist1.front() > copylist2.front())
+			flist.push_back(copylist1.front());
+			copylist1.pop_front();
+			size1--;
+		}
+		else if (copylist1.front() > copylist2.front())
 		{
-		flist.push_back(copylist2.front());
-		copylist2.pop_front();
-		size2--;
-		//Elementos igual se elimina de primera lista
-		}else if(copylist1.front() == copylist2.front()){
-		flist.push_back(copylist1.front());
-		copylist1.pop_front();
-		size1--;
+			flist.push_back(copylist2.front());
+			copylist2.pop_front();
+			size2--;
+			//Elementos igual se elimina de primera lista
+		}
+		else if (copylist1.front() == copylist2.front())
+		{
+			flist.push_back(copylist1.front());
+			copylist1.pop_front();
+			size1--;
 		}
 	}
-	if(size1 > 0)
+	if (size1 > 0)
 	{
-		while(size1 != 0)
+		while (size1 != 0)
 		{
-		flist.push_back(copylist1.front());
-		copylist1.pop_front();
-		size1--;
+			flist.push_back(copylist1.front());
+			copylist1.pop_front();
+			size1--;
 		}
-	}else if(size2 > 0)
+	}
+	else if (size2 > 0)
 	{
-		while(size2 != 0)
+		while (size2 != 0)
 		{
-		flist.push_back(copylist2.front());
-		copylist2.pop_front();
-		size2--;
+			flist.push_back(copylist2.front());
+			copylist2.pop_front();
+			size2--;
 		}
-	}	
+	}
 	return flist;
 }
 template <class T>

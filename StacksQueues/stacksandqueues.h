@@ -1,9 +1,8 @@
-/*
- * saq.h
- *
- *  Created on: 10/08/2015
- *      Author: pperezm
- */
+/*-----------------------------------------
+ *	Actividad de Programacion: Stacks and Queues
+ *	Fecha: 15-Oct-2018  
+ *	Autor: A01250647 Alberto Castaneda Arana
+ ------------------------------------------*/
 
 #ifndef STACKSANDQUEUES_H_
 #define STACKSANDQUEUES_H_
@@ -145,12 +144,71 @@ queue<int> StacksAndQueues::merge(const queue<int> &queue1, const queue<int> &qu
 			result.push(temp);
 		}
 	}
+	temp = 0;
 	return result;
 }
 
 string StacksAndQueues::convertInfixToPostfix(const string &expr)
 {
-	return string("");
+	queue<string> resultado;
+	stack<string> pila;
+	queue<string> temp = tokenize(expr);
+
+	while (!temp.empty())
+	{
+		if (isdigit(temp.front()[0]))
+			resultado.push(temp.front());
+		if (temp.front() == "(")
+			pila.push(temp.front());
+		if ((temp.front() == "+") || (temp.front() == "-") || (temp.front() == "*") || (temp.front() == "/"))
+		{
+			while (!pila.empty() && pila.top() != "(")
+			{
+				if (hasHigherPrecedence(pila.top(), temp.front()))
+				{
+					string topString = pila.top();
+					pila.pop();
+					resultado.push(topString);
+				}
+				else
+					break;
+			}
+			pila.push(temp.front());
+		}
+		if (temp.front() == ")")
+		{
+			while (!pila.empty() && pila.top() != "(")
+			{
+				string topString = pila.top();
+				pila.pop();
+				resultado.push(topString);
+			}
+			if (!pila.empty())
+			{
+				pila.pop();
+			}
+		}
+		temp.pop();
+	}
+	if (!pila.empty())
+	{
+		while (!pila.empty())
+		{
+			string topString = pila.top();
+			pila.pop();
+			resultado.push(topString);
+		}
+	}
+	string resultString;
+	while (!resultado.empty())
+	{
+		resultString += resultado.front();
+		if (resultado.size() != 1)
+			resultString += " ";
+		resultado.pop();
+	}
+
+	return resultString;
 }
 
 #endif /* STACKSANDQUEUES_H_ */
