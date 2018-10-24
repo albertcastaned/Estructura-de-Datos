@@ -4,7 +4,7 @@
  *	Autor: A01250647 Alberto Castaneda Arana
  ------------------------------------------*/
 
-#ifndef STACKSANDQUEUES_H_
+#ifndef STACKSANDQUE UES_H_
 #define STACKSANDQUEUES_H_
 
 #include <iostream>
